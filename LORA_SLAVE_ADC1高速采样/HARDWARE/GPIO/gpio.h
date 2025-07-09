@@ -1,0 +1,52 @@
+#ifndef _USER_GPIO_H
+#define _USER_GPIO_H
+#include "sys.h"
+
+
+/** 
+  * @brief  GPIO Bit SET and Bit RESET enumeration 
+  */ 
+typedef enum
+{ 
+  Bit_RESET = 0,
+  Bit_SET
+}BitAction;
+
+#define ICM_PWENH  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_3,GPIO_PIN_SET)
+#define ICM_PWENL  HAL_GPIO_WritePin(GPIOA,GPIO_PIN_3,GPIO_PIN_RESET)
+
+
+#define AI_PWENH  HAL_GPIO_WritePin(GPIOC,GPIO_PIN_3,GPIO_PIN_SET)
+#define AI_PWENL  HAL_GPIO_WritePin(GPIOC,GPIO_PIN_3,GPIO_PIN_RESET)
+
+
+#define LORA_PWENH  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_2,GPIO_PIN_SET)
+#define LORA_PWENL  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_2,GPIO_PIN_RESET)
+
+
+#define LORA_RSTH  HAL_GPIO_WritePin(GPIOC,GPIO_PIN_6,GPIO_PIN_SET)
+#define LORA_RSTL  HAL_GPIO_WritePin(GPIOC,GPIO_PIN_6,GPIO_PIN_RESET)
+
+#define SPI2CSH  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_SET)
+#define SPI2CSL  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_12,GPIO_PIN_RESET)
+
+
+
+#define RADIO_NSS_PORT  	GPIOB
+#define RADIO_NSS_PIN   	GPIO_PIN_12
+
+#define RADIO_BUSY_PORT  	GPIOB
+#define RADIO_BUSY_PIN   	GPIO_PIN_0 
+
+#define RADIO_DIO1_PORT  	GPIOB
+#define RADIO_DIO1_PIN   	GPIO_PIN_1
+
+uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin);
+
+void GPIO_Init(void);
+
+#endif
+
+
+
+
