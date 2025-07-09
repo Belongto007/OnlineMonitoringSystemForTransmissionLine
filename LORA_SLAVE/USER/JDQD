@@ -1,0 +1,53 @@
+#include "sys.h"
+#include "usart.h"
+#include "delay.h"
+#include "led.h"
+#include "key.h"
+#include "lcd.h"
+#include "adc.h"
+
+int main(void)
+{
+    u16 adcx;
+    float temp;
+
+    HAL_Init();
+    SystemClock_Config();		//初始化系统时钟为80M
+    delay_init(80); 				//初始化延时函数    80M系统时钟
+    uart_init(115200);			//初始化串口，波特率为115200
+
+    GPIO_Init();					//初始化GPIO
+    //LCD_Init();						//初始化LCD
+
+  //  MY_ADC_Init();				//初始化ADC1通道3
+
+    //POINT_COLOR = RED;
+   // Display_ALIENTEK_LOGO(0, 0);
+    //LCD_ShowString(30, 100, 200, 16, 16, "Pandora STM32L4 IOT");
+    //LCD_ShowString(30, 120, 200, 16, 16, "ADC TEST");
+    //LCD_ShowString(30, 140, 200, 16, 16, "ATOM@ALIENTEK");
+    //LCD_ShowString(30, 160, 200, 16, 16, "2018/10/27");
+    POINT_COLOR = BLUE; //设置字体为蓝色
+    ////LCD_ShowString(30, 190, 200, 16, 16, "ADC1_CH3_VAL(PC2):");
+    //LCD_ShowString(30, 210, 200, 16, 16, "ADC1_CH3_VOL(PC2):0.000V");	//先在固定位置显示小数点
+
+    while(1)
+    {
+			
+			__NOP();
+			/*
+        adcx = Get_Adc_Average(ADC_CHANNEL_3, 20); 	//获取通道3的转换值，20次取平均
+        //LCD_ShowxNum(174, 190, adcx, 4, 16, 0);	 	//显示ADCC采样后的原始值
+        temp = (float)adcx * (3.3 / 4096);    		//获取计算后的带小数的实际电压值，比如3.1111
+        adcx = temp;                          		//赋值整数部分给adcx变量，因为adcx为u16整形
+        LCD_ShowxNum(174, 210, adcx, 1, 16, 0); 	//显示电压值的整数部分，3.1111的话，这里就是显示3
+        temp -= adcx;                         		//把已经显示的整数部分去掉，留下小数部分，比如3.1111-3=0.1111
+        temp *= 1000;                         		//小数部分乘以1000，例如：0.1111就转换为111.1，相当于保留三位小数。
+        LCD_ShowxNum(190, 210, temp, 3, 16, 0X80); 	//显示小数部分（前面转换为了整形显示），这里显示的就是111.
+        LED_B_TogglePin;
+        delay_ms(250);
+			*/
+    }
+}
+
+
